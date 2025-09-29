@@ -1,1 +1,16 @@
+import { useState } from "react";
 
+export default function Counter() {
+  const [c, setC] = useState(0);
+  return (
+    <div className="p-3 rounded shadow w-48 text-center">
+      <h1>Count: {c}</h1>
+      {c === 10 && <p className="text-red-500 text-xs">Max!</p>}
+      <div className="flex gap-2 justify-center">
+        <button onClick={() => setC(v => Math.max(0, v - 1))} disabled={!c} className="px-2 bg-blue-500 text-white rounded">-</button>
+        <button onClick={() => setC(v => Math.min(10, v + 1))} disabled={c === 10} className="px-2 bg-green-500 text-white rounded">+</button>
+      </div>
+      <button onClick={() => setC(0)} className="mt-1 px-2 bg-gray-500 text-white rounded">Reset</button>
+    </div>
+  );
+}
